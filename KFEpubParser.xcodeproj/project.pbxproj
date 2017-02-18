@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		806E76761E57407500D4B1DB /* ChapterListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 806E76751E57407500D4B1DB /* ChapterListController.m */; };
+		806E76781E57590C00D4B1DB /* demo2.epub in Resources */ = {isa = PBXBuildFile; fileRef = 806E76771E57590C00D4B1DB /* demo2.epub */; };
 		808AFE501E55AD5700B636EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 808AFE4F1E55AD5700B636EE /* main.m */; };
 		808AFE531E55AD5700B636EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808AFE521E55AD5700B636EE /* AppDelegate.m */; };
 		808AFE561E55AD5700B636EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808AFE551E55AD5700B636EE /* ViewController.m */; };
@@ -45,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		806E76741E57407500D4B1DB /* ChapterListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterListController.h; sourceTree = "<group>"; };
+		806E76751E57407500D4B1DB /* ChapterListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterListController.m; sourceTree = "<group>"; };
+		806E76771E57590C00D4B1DB /* demo2.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.epub; sourceTree = "<group>"; };
 		808AFE4B1E55AD5700B636EE /* KFEpubParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KFEpubParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		808AFE4F1E55AD5700B636EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		808AFE511E55AD5700B636EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -161,6 +166,8 @@
 				808AFE521E55AD5700B636EE /* AppDelegate.m */,
 				808AFE541E55AD5700B636EE /* ViewController.h */,
 				808AFE551E55AD5700B636EE /* ViewController.m */,
+				806E76741E57407500D4B1DB /* ChapterListController.h */,
+				806E76751E57407500D4B1DB /* ChapterListController.m */,
 				808AFE571E55AD5700B636EE /* Main.storyboard */,
 				808AFE5A1E55AD5700B636EE /* Assets.xcassets */,
 				808AFE5C1E55AD5700B636EE /* LaunchScreen.storyboard */,
@@ -173,6 +180,7 @@
 		808AFE4E1E55AD5700B636EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				806E76771E57590C00D4B1DB /* demo2.epub */,
 				808D334B1E56957C00676632 /* demo.epub */,
 				808AFE4F1E55AD5700B636EE /* main.m */,
 			);
@@ -380,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808D334C1E56957C00676632 /* demo.epub in Resources */,
+				806E76781E57590C00D4B1DB /* demo2.epub in Resources */,
 				808AFE5E1E55AD5700B636EE /* LaunchScreen.storyboard in Resources */,
 				808AFE5B1E55AD5700B636EE /* Assets.xcassets in Resources */,
 				808AFE591E55AD5700B636EE /* Main.storyboard in Resources */,
@@ -410,6 +419,7 @@
 				808D33441E55B77700676632 /* zip.c in Sources */,
 				808D329E1E55B4F800676632 /* NSString+DDXML.m in Sources */,
 				808D333A1E55B77700676632 /* aestab.c in Sources */,
+				806E76761E57407500D4B1DB /* ChapterListController.m in Sources */,
 				808D333F1E55B77700676632 /* pwd2key.c in Sources */,
 				808D333E1E55B77700676632 /* prng.c in Sources */,
 				808AFE721E55AD8300B636EE /* KFEpubConstants.m in Sources */,

@@ -9,13 +9,12 @@
 #import "ViewController.h"
 #import "KFEpubKit.h"
 
-@interface ViewController ()<KFEpubControllerDelegate, UIGestureRecognizerDelegate>
+@interface ViewController ()<KFEpubControllerDelegate, UIGestureRecognizerDelegate,UIWebViewDelegate>
 
 @property(nonatomic,strong)KFEpubController *epubController;
 @property(nonatomic,strong)KFEpubContentModel *contentModel;
 
 @property (nonatomic) NSUInteger spineIndex;
-
 
 @end
 
@@ -24,10 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.spineIndex = 1;
+    self.spineIndex = 3;
     [self.epubController openAsynchronous:true];
     
-    UISwipeGestureRecognizer *swipeRecognizer;
+    /*UISwipeGestureRecognizer *swipeRecognizer;
     swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
     swipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     swipeRecognizer.delegate = self;
@@ -37,6 +36,22 @@
     swipeRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     swipeRecognizer.delegate = self;
     [self.webview addGestureRecognizer:swipeRecognizer];
+    */
+    
+//    self.webview.scrollView.pagingEnabled = true;
+//    self.webview.paginationMode = UIWebPaginationModeLeftToRight;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationForDidSelectChapter:) name:@"DidSelectChapter" object:nil];
+}
+
+-(void)notificationForDidSelectChapter: (NSNotification*)noti{
+    NSDictionary *chapter = noti.object;
+
+    NSURL *contentURL = [self.epubController.epubContentBaseURL URLByAppendingPathComponent:chapter[@"src"]];
+    NSLog(@"did select chapter :%@", chapter[@"src"]);
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:contentURL];
+    [self.webview loadRequest:request];
 }
 
 - (void)didSwipeRight:(UIGestureRecognizer *)recognizer
@@ -60,7 +75,7 @@
 
 -(KFEpubController *)epubController{
     if (!_epubController) {
-        NSURL *epubURL = [[NSBundle mainBundle] URLForResource:@"demo.epub" withExtension:nil];
+        NSURL *epubURL = [[NSBundle mainBundle] URLForResource:@"demo2.epub" withExtension:nil];
         NSFileManager *fm = [NSFileManager defaultManager];
         NSURL *docURL = [[fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
         NSString *name = [[[epubURL lastPathComponent] componentsSeparatedByString:@"."] firstObject];
@@ -96,10 +111,16 @@
     self.epubController = controller;
     self.contentModel = contentModel;
     [self updateContentForSpineIndex:self.spineIndex];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DidOpenEpub" object:contentModel.chapters];
 }
 
 -(void)epubController:(KFEpubController *)controller didFailWithError:(NSError *)error{
     NSLog(@"[%s]",__func__);
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
